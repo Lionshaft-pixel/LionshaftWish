@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LionshaftWish - Home</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5NPMWHT2M7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-5NPMWHT2M7');
+    </script>
+</head>
+
+<body>
+    <!-- Sidebar Nav -->
+    <div id="sidebar" class="sidebar">
+        <button id="closeSidebar" class="close-btn">✖</button>
+        <h3>Menu</h3>
+        <ul>
+            <li><a href="dashboard.html">👤 Dashboard</a></li>
+            <li><a href="terms.html">📜 Terms & Conditions</a></li>
+            <li><a href="contact.html">✉️ Contact</a></li>
+            <li><button id="logoutBtn">🚪 Logout</button></li>
+        </ul>
+    </div>
+
+    <!-- Hamburger Button -->
+    <button id="openSidebar" class="hamburger">☰</button>
+
+    <!-- Header -->
+    <header>
+        <h1>LionshaftWish</h1>
+        <p>Wish List to Wish Granted.</p>
+        <h2 id="welcomeMsg"></h2>
+        <p>Your ID: <span id="userUidBox"></span></p>
+        <nav class="navbar">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+            <a href="updates.html" class="nav-link">Updates</a>
+            <a href="donate.html" class="donate-orange donate-orange-button">Donate</a>
+            <a href="postwish.html" class="nav-link hero-button">Post Your Wishes</a>
+            <a href="founder.html" class="nav-link hero-button">About the Founder</a>
+        </nav>
+    </header>
+
+    <main>
+        <a href="Lionshaft-wish.html" class="wish-link">
+            <section class="wish">
+                <h2>👑 From Founder of LionshaftWish: Help Me Upgrade This Website</h2>
+                <p>Hey! I'm Lionshaft! 14 years old, solo dev from India. I made this site to help people get their
+                    dreams funded. But I need your support to make this platform bigger and better!</p>
+                <ul>
+                    <li>Goal: ₹5000</li>
+                    <li>Progress: ₹0 / ₹5000 (Updates every 24 hour)</li>
+                </ul>
+                <p><strong>UPI ID:</strong> 9125569967@fam</p>
+                <p>Every ₹ counts. Be part of the beginning 🙏</p>
+                <div class="progress-container">
+                    <p><strong>Goal:</strong> ₹5,000</p>
+                    <p><strong>Progress:</strong> <span id="progress-text">₹0</span> / ₹5,000</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                </div>
+                <p id="progress-message" class="progress-message">Loading status...</p>
+            </section>
+        </a>
+
+        <section class="placeholder-wishes">
+            <h2>✨ Wishes Coming Soon!</h2>
+            <p>Once more people start posting, you’ll see their dreams here!</p>
+        </section>
+    </main>
+
+    <!-- Share Section -->
+    <section class="share-box">
+        <h2>📢 Share LionshaftWish</h2>
+        <p>If you believe in the dream, help spread it. Share the site with your friends!</p>
+
+        <div class="share-actions">
+            <input type="text" id="copyLinkInput" value="https://glitchyn.online" readonly>
+            <button onclick="copyLink()">📋 Copy Link</button>
+            <button onclick="shareSite()">🔗 Share</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 LionshaftWish.</p>
+    </footer>
+
+    <!-- Main JS (Module for Firebase + Sidebar etc) -->
+    <script type="module" src="scripts/main.js"></script>
+</body>
+
+</html>

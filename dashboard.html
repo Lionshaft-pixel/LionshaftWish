@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard | LionshaftWish</title>
+  <link rel="stylesheet" href="styles/style.css" />
+  <link rel="stylesheet" href="styles/dashboard.css" />
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <div id="sidebar" class="sidebar hidden">
+    <button id="closeSidebar">✖</button>
+    <h3>Dashboard</h3>
+    <ul>
+      <li><a href="dashboard.html">👤 My Info</a></li>
+      <li><a href="terms.html">📜 Terms & Conditions</a></li>
+      <li><a href="contact.html">✉️ Contact</a></li>
+      <li><button id="logoutBtn">🚪 Logout</button></li>
+    </ul>
+  </div>
+
+  <!-- Main content -->
+  <header>
+    <button id="openSidebar">☰</button>
+    <h1>Welcome to Your Dashboard</h1>
+  </header>
+
+  <main>
+    <h2 id="welcomeMsg">Welcome, user!</h2>
+    <p>Your UID: <span id="userUidBox"></span></p>
+  </main>
+
+  <script type="module" src="scripts/dashboard.js"></script>
+</body>
+</html>
