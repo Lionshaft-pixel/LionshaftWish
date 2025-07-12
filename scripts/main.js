@@ -3,10 +3,10 @@ import { auth } from './firebase-init.js';
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 // === ACCESS PROTECTION ===
-if (!localStorage.getItem("userUID")) {
-  alert("You must be logged in to view this page.");
-  window.location.href = "login.html";
-}
+//if (!localStorage.getItem("userUID")) {
+//  alert("You must be logged in to view this page.");
+//  window.location.href = "login.html";
+//}
 
 // === DONATION PROGRESS ===
 const goalAmount = 5000;
