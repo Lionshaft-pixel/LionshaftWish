@@ -78,16 +78,46 @@ if (userUID && uidBox) {
 
 // === WELCOME MESSAGE ===
 onAuthStateChanged(auth, (user) => {
-  if (user) {
-    const welcomeBox = document.getElementById("welcomeMsg");
-    if (welcomeBox) {
-      welcomeBox.textContent = `Welcome back, ${user.email} 👋`;
-    }
+  const welcomeBox = document.getElementById("welcomeMsg");
+  const uidBox = document.getElementById("userUidBox");
+  const logoutBtns = [
+  document.getElementById("logoutBtn"),     // sidebar
+  document.getElementById("logoutBtnNav")   // navbar
+];
+
+logoutBtns.forEach(btn => {
+  if (btn) {
+    btn.addEventListener("click", () => {
+      signOut(auth).then(() => {
+        localStorage.removeItem("userUID");
+        alert("👋 Logged out successfully!");
+        window.location.href = "index.html";
+      }).catch((error) => {
+        alert("❌ Logout failed: " + error.message);
+      });
+    });
   }
 });
 
+  const loginLink = document.querySelector('a[href="login.html"]');
+
+  if (user) {
+    if (welcomeBox) welcomeBox.textContent = `Welcome back, ${user.email} 👋`;
+    if (uidBox) uidBox.textContent = user.uid;
+    if (logoutBtn) logoutBtn.style.display = "inline-block";
+    if (loginLink) loginLink.style.display = "none";
+  } else {
+    if (welcomeBox) welcomeBox.textContent = `Welcome, guest 👋`;
+    if (uidBox) uidBox.textContent = "Guest";
+    if (logoutBtn) logoutBtn.style.display = "none";
+    if (loginLink) loginLink.style.display = "inline-block";
+  }
+});
+
+
 // === LOGOUT ===
-const logoutBtn = document.getElementById("logoutBtn");
+const logoutBtnSidebar = document.getElementById("logoutBtn");
+const logoutBtnNav = document.getElementById("logoutBtnNav");
 
 if (logoutBtn) {
   logoutBtn.addEventListener("click", () => {
@@ -134,4 +164,20 @@ document.addEventListener("DOMContentLoaded", () => {
     sidebar.classList.add("hidden");
     openBtn.classList.remove("hide"); // Show hamburger again
   });
+});
+
+// === HANDLE LOGOUT + LOGIN VISIBILITY ===
+onAuthStateChanged(auth, (user) => {
+  const logoutBtn = document.getElementById("logoutBtn");
+  const loginLink = document.querySelector('a[href="login.html"]');
+
+  if (user) {
+  if (logoutBtnSidebar) logoutBtnSidebar.style.display = "inline-block";
+  if (logoutBtnNav) logoutBtnNav.style.display = "inline-block";
+  if (loginLink) loginLink.style.display = "none";
+} else {
+  if (logoutBtnSidebar) logoutBtnSidebar.style.display = "none";
+  if (logoutBtnNav) logoutBtnNav.style.display = "none";
+  if (loginLink) loginLink.style.display = "inline-block";
+}
 });
