@@ -1,0 +1,734 @@
+/* Global Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #0077cc;
+}
+
+header p {
+  margin: 5px 0 15px;
+  font-style: italic;
+  color: #666;
+}
+
+nav a {
+  background-color: #0077cc;
+  color: #fff;
+  margin: 10px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+nav a:hover {
+  background-color: #005fa3;
+}
+
+/* Main Section */
+main {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+/* Wish Card */
+.wish {
+  background-color: #ffffff;
+  border-left: 6px solid #0077cc;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.wish h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.wish ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.wish li {
+  padding: 4px 0;
+}
+
+/* Make entire wish card clickable */
+.wish-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wish-link:hover .wish {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  border-left-color: #005fa3; /* make it more blue-ish on hover */
+  cursor: pointer;
+}
+
+/* Placeholder */
+.placeholder-wishes {
+  text-align: center;
+  background: #fff9e6;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px dashed #ffc107;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 15px;
+  margin-top: 30px;
+  background-color: #eee;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* QR CODE */
+.qr-code {
+    border-radius: 20px;
+}
+
+/* Progress bar */
+.progress-container {
+  margin: 15px 0;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background-color: #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #0077cc;
+  width: 0%;
+  transition: width 0.8s ease;
+  border-radius: 10px 0 0 10px;
+}
+
+.progress-message {
+  margin-top: 8px;
+  font-weight: bold;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+/* Progress bar colors */
+.progress-red {
+  background-color: #e53935; /* red */
+}
+
+.progress-yellow {
+  background-color: #f9a825; /* yellow-ish */
+}
+
+.progress-green {
+  background-color: #43a047; /* green */
+}
+
+/* Contact */
+.contact-section {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: #1e1e1e;
+  color: white;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+.contact-form label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.7rem;
+  margin-top: 0.3rem;
+  border: none;
+  border-radius: 8px;
+  background: #333;
+  color: white;
+}
+
+.contact-form button {
+  margin-top: 1rem;
+  padding: 10px 20px;
+  background-color: #1e90ff;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background-color: #0a74da;
+}
+
+/* NAVIGATION BAR */
+.navbar {
+  background-color: #111;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0.5rem 1rem;
+  border-bottom: 2px solid #1e90ff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  align-items: center;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 0.5rem;
+  padding: 10px 16px; /* match button padding */
+  background: #222;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.nav-link:hover {
+  background-color: #1e90ff;
+  color: white;
+}
+
+.donate-orange {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 0.5rem;
+  padding: 10px 16px; /* match button padding */
+  background: #222;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.donate-orange:hover {
+  background-color: #d3800b;
+  color: white;
+}
+
+/* Hero Button */
+
+.donate-orange-button {
+  background-color: rgb(243, 127, 19);
+}
+
+.hero-button {
+  background-color: #1e90ff;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 0 10px #1e90ff77;
+}
+
+.hero-button:hover {
+  background-color: #0066cc;
+}
+
+/* Share */
+.share-box {
+  margin: 2rem auto;
+  max-width: 600px;
+  padding: 1.5rem;
+  background-color: #1c1c1c;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  color: white;
+  text-align: center;
+}
+
+.share-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.share-actions input {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  background: #333;
+  color: white;
+  width: 70%;
+  text-align: center;
+}
+
+.share-actions button {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #1e90ff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.share-actions button:hover {
+  background-color: #0066cc;
+}
+
+/* Reviews */
+.testimonial-section {
+  padding: 2rem;
+  background-color: #181818;
+  color: white;
+  text-align: center;
+}
+
+.testimonial-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.testimonial-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.testimonial-card {
+  background-color: #222;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(0,0,0,0.4);
+}
+
+.testimonial-text {
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.testimonial-author {
+  font-weight: bold;
+  color: #1e90ff;
+}
+
+/* Updates */
+.update-heading {
+    color: #111;
+    background-color: royalblue;
+    border-radius: 15px;
+}
+
+.updates-page {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  color: white;
+}
+
+.update-log {
+  margin-top: 2rem;
+}
+
+.update-entry {
+  background-color: #222;
+  border-left: 5px solid #1e90ff;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.update-entry h3 {
+  margin-top: 0;
+  color: #1e90ff;
+}
+
+.update-entry p {
+  margin: 0.5rem 0 0;
+  color: #ccc;
+}
+
+/* Login */
+.auth-form {
+      max-width: 400px;
+      margin: 4rem auto;
+      background: #222;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      color: white;
+    }
+
+    .auth-form input {
+      display: block;
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 0.8rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+    }
+
+    .auth-form button {
+      padding: 0.7rem;
+      width: 100%;
+      font-size: 1rem;
+      background: #1e90ff;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .auth-form button:hover {
+      background: #0f71cc;
+    }
+
+    .auth-form .error {
+      color: red;
+      font-size: 0.9rem;
+      margin-top: -0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .forgot {
+      font-size: 0.9rem;
+      text-align: right;
+      margin-bottom: 1rem;
+    }
+
+    .forgot a {
+      color: #1e90ff;
+      text-decoration: none;
+    }
+
+    .forgot a:hover {
+      text-decoration: underline;
+    }
+
+/* === SIGN UP / LOGIN / RESET FORMS === */
+
+.auth-form,
+.container {
+  max-width: 400px;
+  margin: 4rem auto;
+  background: #222;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  color: white;
+  text-align: center;
+}
+
+/* Input fields only inside forms */
+.auth-form input,
+.container input {
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+/* Buttons only inside forms */
+.auth-form button,
+.container button {
+  padding: 0.7rem;
+  width: 100%;
+  font-size: 1rem;
+  background: #1e90ff;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.auth-form button:hover,
+.container button:hover {
+  background: #0f71cc;
+}
+
+/* Error message text */
+.auth-form .error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* === GLOBAL (safe) === */
+
+/* Don’t globally style input/button anymore!
+input, button {
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+
+button {
+  background: #00c2ff;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+*/
+
+/* ===== Auth Container ===== */
+.auth-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.auth-card {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.auth-card h2 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.auth-card p {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.auth-card input,
+.auth-card button {
+  width: 100%;
+  padding: 12px;
+  margin: 12px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  box-sizing: border-box; /* ⬅️ important so padding doesn’t overflow */
+}
+
+.auth-card button:hover {
+  background: #009bd6;
+}
+
+.switch-auth {
+  margin-top: 14px;
+  font-size: 0.9rem;
+}
+
+.switch-auth a {
+  color: #00c2ff;
+  text-decoration: none;
+}
+
+.switch-auth a:hover {
+  text-decoration: underline;
+}
+
+.message {
+  margin-top: 10px;
+  font-weight: bold;
+  color: green;
+}
+
+/* Welcome message */
+#welcomeMsg:empty {
+  display: none;
+}
+
+/* Side bar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #222;
+  color: white;
+  width: 250px;
+  height: 100%;
+  padding: 20px;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+.sidebar.show {
+  transform: translateX(0);
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.sidebar ul li {
+  margin: 15px 0;
+}
+
+.sidebar a, .sidebar button {
+  color: white;
+  text-decoration: none;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#openSidebar {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background: #333;
+  color: white;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 10px;
+  z-index: 500; /* High enough to be clickable, but below sidebar */
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#openSidebar.hide {
+  display: none;
+}
+
+#openSidebar:hover {
+  background: #444;
+}
+
+#closeSidebar {
+  background: none;
+  color: white;
+  font-size: 1.5rem;
+  border: none;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+}
+
+.sidebar a:hover,
+.sidebar button:hover {
+  color: #00ffff; /* Bright neon highlight */
+  text-decoration: underline;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding-left: 4px;
+}
+
+.hidden {
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.sidebar.show {
+  transform: translateX(0);
+  display: block;
+}
+
+.sidebar.hidden {
+  transform: translateX(-100%);
+}
+
+/* Log out Button */
+#logoutBtn {
+  display: none;
+}
+
+/* Close Login Page button */
+#closeLogin {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 999;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%; /* 👈 this makes it a perfect circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+#closeLogin:hover {
+  background: #fff;
+  transform: scale(1.1);
+}
+
+#closeLogin i {
+  width: 20px;
+  height: 20px;
+  stroke: #333;
+}
