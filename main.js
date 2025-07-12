@@ -2,11 +2,11 @@
 import { auth } from './firebase-init.js';
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-// === DISABLE ACCESS PROTECTION FOR NOW ===
-// if (!localStorage.getItem("userUID")) {
-//   alert("You must be logged in to view this page.");
-//   window.location.href = "login.html";
-// }
+// === ACCESS PROTECTION ===
+//if (!localStorage.getItem("userUID")) {
+//  alert("You must be logged in to view this page.");
+//  window.location.href = "login.html";
+//}
 
 // === DONATION PROGRESS ===
 const goalAmount = 5000;
@@ -44,7 +44,7 @@ function copyLink() {
   const input = document.getElementById("copyLinkInput");
   if (input) {
     input.select();
-    input.setSelectionRange(0, 99999);
+    input.setSelectionRange(0, 99999); // mobile safe
     document.execCommand("copy");
     alert("✅ Link copied to clipboard!");
   }
@@ -67,55 +67,41 @@ function shareSite() {
   }
 }
 
-// === DISPLAY USER UID (HIDDEN FOR GUEST MODE) ===
-// const userUID = localStorage.getItem("userUID");
-// const uidBox = document.getElementById("userUidBox");
+// === DISPLAY USER UID ===
+const userUID = localStorage.getItem("userUID");
+const uidBox = document.getElementById("userUidBox");
 
-// if (userUID && uidBox) {
-//   uidBox.textContent = userUID;
-//   console.log("Logged in as UID:", userUID);
-// }
+if (userUID && uidBox) {
+  uidBox.textContent = userUID;
+  console.log("Logged in as UID:", userUID);
+}
 
-// === WELCOME MESSAGE (GUEST FRIENDLY) ===
+// === WELCOME MESSAGE ===
 onAuthStateChanged(auth, (user) => {
-  const welcomeBox = document.getElementById("welcomeMsg");
-  const uidBox = document.getElementById("userUidBox");
-  const logoutBtn = document.getElementById("logoutBtn");
-  const loginLink = document.querySelector('a[href="login.html"]');
-
   if (user) {
-    if (welcomeBox) welcomeBox.textContent = `Welcome back, ${user.email} 👋`;
-    if (uidBox) uidBox.textContent = user.uid;
-    if (logoutBtn) logoutBtn.style.display = "inline-block";
-    if (loginLink) loginLink.style.display = "none";
-    localStorage.setItem("userUID", user.uid);
-  } else {
-    if (welcomeBox) welcomeBox.textContent = `Welcome, guest 👋`;
-    if (uidBox) uidBox.textContent = `Guest`;
-    if (logoutBtn) logoutBtn.style.display = "none"; // 👈 Hides logout button for guests!
-    if (loginLink) loginLink.style.display = "inline-block";
-    localStorage.removeItem("userUID");
+    const welcomeBox = document.getElementById("welcomeMsg");
+    if (welcomeBox) {
+      welcomeBox.textContent = `Welcome back, ${user.email} 👋`;
+    }
   }
 });
 
-// === WAIT FOR PAGE TO LOAD THEN ADD LOGOUT FUNCTION ===
-document.addEventListener("DOMContentLoaded", () => {
-  const logoutBtns = document.querySelectorAll("#logoutBtn");
+// === LOGOUT ===
+const logoutBtn = document.getElementById("logoutBtn");
 
-  logoutBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      signOut(auth).then(() => {
-        localStorage.removeItem("userUID");
-        alert("👋 Logged out successfully!");
-        window.location.href = "index.html";
-      }).catch((error) => {
-        alert("❌ Logout failed: " + error.message);
-      });
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", () => {
+    signOut(auth).then(() => {
+      localStorage.removeItem("userUID");
+      alert("👋 Logged out successfully!");
+      window.location.href = "login.html";
+    }).catch((error) => {
+      alert("❌ Logout failed: " + error.message);
     });
   });
-});
+}
 
-// === SIDEBAR TOGGLE ===
+// Sidebar toggle
 const sidebar = document.getElementById("sidebar");
 const openBtn = document.getElementById("openSidebar");
 const closeBtn = document.getElementById("closeSidebar");
@@ -140,28 +126,12 @@ document.addEventListener("DOMContentLoaded", () => {
   openBtn.addEventListener("click", () => {
     sidebar.classList.add("show");
     sidebar.classList.remove("hidden");
-    openBtn.classList.add("hide");
+    openBtn.classList.add("hide"); // Hide hamburger
   });
 
   closeBtn.addEventListener("click", () => {
     sidebar.classList.remove("show");
     sidebar.classList.add("hidden");
-    openBtn.classList.remove("hide");
+    openBtn.classList.remove("hide"); // Show hamburger again
   });
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  const logoutBtn = document.getElementById("logoutBtn");
-
-  if (logoutBtn) {
-    logoutBtn.addEventListener("click", () => {
-      signOut(auth).then(() => {
-        localStorage.removeItem("userUID");
-        alert("👋 Logged out successfully!");
-        window.location.href = "index.html";
-      }).catch((error) => {
-        alert("❌ Logout failed: " + error.message);
-      });
-    });
-  }
 });
