@@ -79,29 +79,41 @@ function shareSite() {
 // === WELCOME MESSAGE (GUEST FRIENDLY) ===
 onAuthStateChanged(auth, (user) => {
   const welcomeBox = document.getElementById("welcomeMsg");
-  if (welcomeBox) {
-    if (user) {
-      welcomeBox.textContent = `Welcome back, ${user.email} 👋`;
-    } else {
-      welcomeBox.textContent = `Welcome, guest 👋`;
-    }
+  const uidBox = document.getElementById("userUidBox");
+  const logoutBtn = document.getElementById("logoutBtn");
+  const loginLink = document.querySelector('a[href="login.html"]');
+
+  if (user) {
+    if (welcomeBox) welcomeBox.textContent = `Welcome back, ${user.email} 👋`;
+    if (uidBox) uidBox.textContent = user.uid;
+    if (logoutBtn) logoutBtn.style.display = "inline-block";
+    if (loginLink) loginLink.style.display = "none";
+    localStorage.setItem("userUID", user.uid);
+  } else {
+    if (welcomeBox) welcomeBox.textContent = `Welcome, guest 👋`;
+    if (uidBox) uidBox.textContent = `Guest`;
+    if (logoutBtn) logoutBtn.style.display = "none"; // 👈 Hides logout button for guests!
+    if (loginLink) loginLink.style.display = "inline-block";
+    localStorage.removeItem("userUID");
   }
 });
 
-// === LOGOUT (HIDE IF NOT LOGGED IN) ===
-const logoutBtn = document.getElementById("logoutBtn");
+// === WAIT FOR PAGE TO LOAD THEN ADD LOGOUT FUNCTION ===
+document.addEventListener("DOMContentLoaded", () => {
+  const logoutBtns = document.querySelectorAll("#logoutBtn");
 
-if (logoutBtn) {
-  logoutBtn.addEventListener("click", () => {
-    signOut(auth).then(() => {
-      localStorage.removeItem("userUID");
-      alert("👋 Logged out successfully!");
-      window.location.href = "login.html";
-    }).catch((error) => {
-      alert("❌ Logout failed: " + error.message);
+  logoutBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      signOut(auth).then(() => {
+        localStorage.removeItem("userUID");
+        alert("👋 Logged out successfully!");
+        window.location.href = "index.html";
+      }).catch((error) => {
+        alert("❌ Logout failed: " + error.message);
+      });
     });
   });
-}
+});
 
 // === SIDEBAR TOGGLE ===
 const sidebar = document.getElementById("sidebar");
@@ -136,4 +148,20 @@ document.addEventListener("DOMContentLoaded", () => {
     sidebar.classList.add("hidden");
     openBtn.classList.remove("hide");
   });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+      signOut(auth).then(() => {
+        localStorage.removeItem("userUID");
+        alert("👋 Logged out successfully!");
+        window.location.href = "index.html";
+      }).catch((error) => {
+        alert("❌ Logout failed: " + error.message);
+      });
+    });
+  }
 });

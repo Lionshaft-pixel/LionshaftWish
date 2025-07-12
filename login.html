@@ -6,9 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login | LionshaftWish</title>
     <link rel="stylesheet" href="styles/style.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
+    <a href="index.html" id="closeLogin" title="Go back home">
+        <i data-lucide="x"></i>
+    </a>
+
     <div class="auth-container">
         <div class="auth-card">
             <h2>Welcome Back!</h2>
@@ -27,6 +32,10 @@
     </div>
 
     <script type="module" src="scripts/login.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+
 
 </body>
 
